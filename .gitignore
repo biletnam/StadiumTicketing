@@ -1,6 +1,6 @@
 *.pyc
 *.sqlite3
-.idea
+.idea/
 __pycache__/
 static/media_root/**
 **/migrations/**
