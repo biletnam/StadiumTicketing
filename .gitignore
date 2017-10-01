@@ -9,3 +9,5 @@ static/media_root/**
 app_log.log
 secret.ini
 env/
+.coverage
+
