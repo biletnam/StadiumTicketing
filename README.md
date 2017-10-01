@@ -45,11 +45,3 @@ See deployment for notes on how to deploy the project on a live system.
  
  6. In your browser type [localhost:8000](127.0.0.1:8000)
  
-=======
-
-This is a web project that is aimed at allowing users to book tickets of an event
-that is scheduled to be held in a stadium.
-
-## Demo
-
-Coming soon.
