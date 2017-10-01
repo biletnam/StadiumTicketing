@@ -3,7 +3,6 @@ language: python
 python:
   - 3.6.2
 script:
-  - nosetests --with-coverage
+  - coverage -run --source='.' manage.py test
 after_success:
-  - codeclimate-test-reporter
   - coveralls
