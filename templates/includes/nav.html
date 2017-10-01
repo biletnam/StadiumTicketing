@@ -1,0 +1,23 @@
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="{% url 'events:index' %}" class="navbar-brand">Stadium Ticketing</a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+
+            <ul class="nav navbar-nav navbar-right">
+                {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'account_logout' %}" ><span><i class="fa fa-sign-out"></i></span> Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'account_login' %}" ><span><i class="fa fa-sign-in"></i></span> Login</a></li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </div>
+</div>

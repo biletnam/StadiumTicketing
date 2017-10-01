@@ -1,4 +1,4 @@
-from .models import Manager, UserProfile, Secretary
+from .models import UserProfile
 from django.conf import settings
 from django.conf.urls import url
 from django.contrib import admin, messages
@@ -189,5 +189,3 @@ class UserAdmin(admin.ModelAdmin):
                                                    post_url_continue)
 
 
-admin.site.register(Manager)
-admin.site.register(Secretary)
