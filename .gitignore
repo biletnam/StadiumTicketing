@@ -8,4 +8,4 @@ static/media_root/**
 !**/migrations/__init__.py
 app_log.log
 secret.ini
-env
+env/
