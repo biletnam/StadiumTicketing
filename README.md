@@ -12,9 +12,9 @@ See deployment for notes on how to deploy the project on a live system.
 
 ## Installation
 1. clone the project 
-  ```bash
-  $ git clone https://github.com/gr1d99/StadiumTicketing.git
-  ```
+   ```bash
+    $ git clone https://github.com/gr1d99/StadiumTicketing.git
+   ```
  
  2. Create a virtual enviroment.
     ```bash
@@ -43,5 +43,5 @@ See deployment for notes on how to deploy the project on a live system.
      python manage.py runserver
     ```
  
- 6. In your browser type [127.0.0.1:8000](127.0.0.1:8000)
+ 6. In your browser type [localhost:8000](127.0.0.1:8000)
  
