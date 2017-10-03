@@ -3,3 +3,4 @@ coveralls==1.2.0
 Django==1.11.2
 django-allauth==0.33.0
 django-crispy-forms==1.6.1
+gunicorn==19.7.1
