@@ -1,0 +1,1 @@
+web: gunicorn Ticket.wsgi --log-file -
