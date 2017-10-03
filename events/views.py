@@ -1,7 +1,10 @@
+"""Contains all views of `events` app"""
+
 from django.views.generic import TemplateView
 from helpers.mixins import TitleMixin
 
 
 class IndexView(TitleMixin, TemplateView):
-    template_name = 'events/index.html'
+    """Entry point view"""
+    template_name = 'index.html'
     title = 'Index'
