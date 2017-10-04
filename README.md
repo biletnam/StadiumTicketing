@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/gr1d99/StadiumTicketing.svg?branch=user-interface)](https://travis-ci.org/gr1d99/StadiumTicketing)
+
 # StadiumTicketing
 Is a Django powered web application that allows users to create and login to theire accounts.
 Registered users can reserve and book tickets online.
