@@ -8,11 +8,11 @@ Registered users can reserve and book tickets online.
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 See deployment for notes on how to deploy the project on a live system.
 
-## Prerequisites
+### Prerequisites
 - Python3 [Installation](https://www.python.org/downloads/)
 - Git [Installation](https://git-scm.com/downloads)
 
-## Installation
+### Installation
 1. clone the project 
    ```bash
     $ git clone https://github.com/gr1d99/StadiumTicketing.git
