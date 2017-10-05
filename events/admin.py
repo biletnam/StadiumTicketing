@@ -1,3 +1,13 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Event
+
+
+class AdminEvent(admin.ModelAdmin):
+    list_display = ('name', 'event_date', 'timestamp', 'is_active')
+    prepopulated_fields = {
+        'slug': ('name', )
+    }
+
+
+admin.site.register(Event, AdminEvent)
