@@ -85,3 +85,14 @@ h6 {
 .logout{
   margin-top: 100px;
 }
+
+.event-description{
+  margin-top: 30px;
+}
+.event-description.thumbnail{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#footer{
+  margin-bottom: 20px;
+}
