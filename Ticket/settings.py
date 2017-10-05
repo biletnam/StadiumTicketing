@@ -40,6 +40,7 @@ ALLOWED_HOSTS = [
 
 LOCAL_APPS = [
     'accounts',
+    'events',
     'user_type',
 ]
 
