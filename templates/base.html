@@ -14,9 +14,15 @@
 
         <link rel="stylesheet" href="{% static 'normalize/normalize.min.css' %}">
         <link rel="stylesheet" href="{% static 'normalize/main.css' %}">
-        <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'bootswatch/darkly.bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+              crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-S7YMK1xjUjSpEnF4P8hPUcgjXYLZKK3fQW1j5ObLSl787II9p8RO9XUGehRmKsxd"
+              crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+              rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+              crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'lightbox/ekko-lightbox.min.css' %}">
         <link rel="stylesheet" href="{% static 'app/style.css' %}">
     </head>
@@ -40,7 +46,9 @@
 
             <script src="{% static 'mordenizr/modernizr.min.js' %}"></script>
             <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
-            <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+                    crossorigin="anonymous"></script>
             <script src="{% static 'lightbox/ekko-lightbox.min.js' %}"></script>
             <script>window.jQuery || document.write('<script src="{% static 'jquery/dist/jquery.min.js' %}"><\/script>')</script>
             <script src="{% static 'js/main.js' %}"></script>
