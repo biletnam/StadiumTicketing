@@ -7,51 +7,28 @@
     <div class="container" id="top">
     <h2 class="page-header text-center">Upcoming Events</h2>
         <div class="row">
+            {% for event in events %}
             <div class="col-lg-4 col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <span><i class="fa fa-info-circle"></i></span> Gor finals
+                        <span><i class="fa fa-info-circle"></i></span> {{ event.name|capfirst }}
                     </div>
                     <div class="panel-body">
-                        <p>When? <span><i class="fa fa-calendar-o"></i> </span> <span class="badge">05/10/2017</span></p>
+                        <p>When? <span><i class="fa fa-calendar-o"></i> </span> <span class="badge">{{ event.event_date }}</span></p>
                         <p>Days remaining <span><i class="fa fa-clock-o"></i> </span> <span class="badge">1</span> </p>
-                        <p>Football finals match between Gor-mahia and Ulinzi stars...</p>
+                        <p class="text-justify">{{ event.description|truncatechars:'100' }}</p>
                     </div>
                     <div class="panel-footer">
-                        <a href="#" class="btn btn-info btn-sm">Details <span><i class="fa fa-arrow-circle-right"></i> </span></a>
+                        <a href="{{ event.get_absolute_url }}" class="btn btn-info btn-sm">Details <span><i class="fa fa-arrow-circle-right"></i> </span></a>
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-4 col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <span><i class="fa fa-info-circle"></i></span> Gor finals
-                    </div>
-                    <div class="panel-body">
-                        <p>When? <span><i class="fa fa-calendar-o"></i> </span> <span class="badge">05/10/2017</span></p>
-                        <p>Days remaining <span><i class="fa fa-clock-o"></i> </span> <span class="badge">1</span> </p>
-                        <p>Football finals match between Gor-mahia and Ulinzi stars...</p>
-                    </div>
-                    <div class="panel-footer">
-                        <a href="#" class="btn btn-info btn-sm">Details <span><i class="fa fa-arrow-circle-right"></i> </span></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <span><i class="fa fa-info-circle"></i></span> Gor finals
-                    </div>
-                    <div class="panel-body">
-                        <p>When? <span><i class="fa fa-calendar-o"></i> </span> <span class="badge">05/10/2017</span></p>
-                        <p>Days remaining <span><i class="fa fa-clock-o"></i> </span> <span class="badge">1</span> </p>
-                        <p>Football finals match between Gor-mahia and Ulinzi stars...</p>
-                    </div>
-                    <div class="panel-footer">
-                        <a href="#" class="btn btn-info btn-sm">Details <span><i class="fa fa-arrow-circle-right"></i> </span></a>
-                    </div>
+            {% empty %}
+                There are no events yet
+            {% endfor %}
+            <div class="row">
+                <div class="col-lg-12 col-md-12 text-center">
+                    <a class="btn btn-info btn-sm" href="{% url 'events:event_list' %}">Load More</a>
                 </div>
             </div>
         </div>
