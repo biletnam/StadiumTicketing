@@ -6,4 +6,5 @@ django-crispy-forms==1.6.1
 gunicorn==19.7.1
 dj-database-url
 whitenoise
+Pillow==4.3.0
 psycopg2
