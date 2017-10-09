@@ -24,7 +24,12 @@ See deployment for notes on how to deploy the project on a live system.
     ```bash
      cd Ticket
     ```
- 3. Create a virtual enviroment.
+ 3. Install virtual enviroment
+    ```bash
+     $ pip install virtualenv
+    ```
+    
+    Create a virtual enviroment.
     ```bash
      $ virtualenv --python=python3 env
     ```
