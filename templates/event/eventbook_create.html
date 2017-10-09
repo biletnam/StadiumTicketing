@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container" ID="top">
+        <div class="col-lg-6 col-md-6 col-sm-offset-3">
+            <div class="well">
+                <h4 class="page-header text-center">
+                    We only need a few details
+                </h4>
+                <form method="post" class="form-horizontal" id="eventbook-form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="id_tickets" class="control-label">
+                            {{ form.tickets.label }}
+                        </label>
+                        {{ form.tickets }}
+                        {% if form.ticket.errors %}
+                            {% for error in form.ticket.errors %}
+                                <p><small class="text-danger">{{ error }}</small></p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    {% if event.is_payable %}
+                        <div class="form-group">
+                            <label for="id_amount" class="control-label">
+                                {{ form.amount.label }}
+                            </label>
+                            {{ form.amount }}
+                            {% if form.amount.errors %}
+                                {% for error in form.amount.errors %}
+                                    <p><small class="text-danger">{{ error }}</small></p>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+
+                    <button class="btn btn-success btn-sm" type="submit">
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

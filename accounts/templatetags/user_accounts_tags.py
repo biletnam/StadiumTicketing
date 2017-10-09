@@ -1,32 +1,29 @@
+from django import http
 from django import template
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.sites.models import Site
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
+
+from accounts.models import UserProfile
 
 
 register = template.Library()
 
 
-@register.inclusion_tag('snippets/user_links.html', takes_context=True, name='user_links')
+
+@register.inclusion_tag('includes/user_links.html', takes_context=True, name='user_links')
 def create_link(context):
     if 'request' in context:
         request = context['request']
-        user_registered = False
-        profile_url =   None
-        create_profile_url = None
-        user_profile = None
-        try:
-            user = request.user
-            user_registered = True
-            user_profile = reverse('accounts-app:user-profile-view', kwargs=({'slug': request.user}))
-            profile_url = user_profile
-        except ObjectDoesNotExist:
-            create_profile_url = reverse('accounts-app:create-profile-view')
+        update_profile_url = None
+        user_profile = reverse('accounts-app:user-profile-custom_mixins', kwargs=({'slug': request.user}))
+        profile_url = user_profile
         return {
-            'user_registered': user_registered,
             'profile_url': profile_url,
-            'create_profile_url': create_profile_url,
+            'update_profile_url': update_profile_url,
+            'request': request
         }
 
 

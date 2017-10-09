@@ -7,22 +7,9 @@ from .models import UserProfile
 from . import mixins
 
 
-class CreateUserProfileView(LoginRequiredMixin, CreateView):
-    form_class = CreateUserProfileForm
-    template_name = 'accounts/create_profile_form.html'
-
-    def get_success_url(self):
-        messages.success(self.request, 'Profile successfully created.')
-        return reverse('accounts-app:user-profile-view', kwargs=({'slug': self.request.user.username, }))
-
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super(CreateUserProfileView, self).form_valid(form)
-
-
 class UserProfileView(LoginRequiredMixin, mixins.CheckIfProfileExist, DetailView):
     model = UserProfile
-    template_name = 'accounts/profile_detail.html'
+    template_name = 'accounts/userprofile_detail.html'
     slug_field = 'username'
 
     def get_context_data(self, **kwargs):
@@ -35,11 +22,9 @@ class UserProfileView(LoginRequiredMixin, mixins.CheckIfProfileExist, DetailView
 class UpdateUserProfileView(LoginRequiredMixin, UpdateView):
     model = UserProfile
     form_class = CreateUserProfileForm
+    template_name = 'accounts/update_profile.html'
+    slug_field = 'username'
 
     def get_success_url(self):
         messages.success(self.request, 'Profile successfully updated.')
-        return reverse('accounts-app:user-profile-view', kwargs=({'slug': self.request.user.username, }))
-
-
-class StaffUsersView(TemplateView):
-    template_name = 'staff/staff_template.html'
+        return reverse('userprofile:userprofile_detail', kwargs=({'slug': self.request.user.username, }))

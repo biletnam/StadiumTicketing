@@ -1,0 +1,101 @@
+{% extends 'accounts/accounts_base.html' %}
+
+{% block accounts_content %}
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="container-fluid">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab"
+                                                                      data-toggle="tab" >My Profile</a></li>
+                            <li role="presentation"><a href="#attachment" aria-controls="attachment" role="tab"
+                                                       data-toggle="tab">My Attachment</a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <br>
+                            <br>
+                            <br>
+                            <div role="tabpanel" class="tab-pane fade in active" id="profile">
+                                <h4 class="page-header text-center"></h4>
+                                                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="user-profile">
+                                    <img class="img-responsive img-centered" src="{{ profile.profile_picture.url }}"/>
+                                    <br/>
+                                </div>
+                                <table class="table table-bordered">
+                                    <caption>Personal Info</caption>
+                                    <tr>
+                                        <th>Username</th>
+                                        <td>{{ object.username|capfirst }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>First Name</th>
+                                        <td>{{ object.first_name|capfirst }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Last Name</th>
+                                        <td>{{ object.last_name|capfirst }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Phone Number</th>
+                                        <td>{{ object.phone_number }}</td>
+                                    </tr>
+                                </table>
+
+                                <table class="table table-bordered">
+                                    <caption>Education Info</caption>
+                                    <tr>
+                                        <th>University/College</th>
+                                        <td>{{ object.university|capfirst }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Course</th>
+                                        <td>{{ object.course|capfirst }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Year of Study</th>
+                                        <td>{{ object.year_of_study }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Resume</th>
+                                        <td><a class="btn btn-info btn-sm" href="{{ object.resume.url }}"><span class="fa fa-eye"></span> View</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        <div class="panel-footer">
+                            <a class="btn btn-default btn-block" href="{{ profile.get_update_url }}">Edit Your Profile</a>
+                        </div>
+                        </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade in active" id="attachment">
+                                <h4 class="page-header text-center"></h4>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Application</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for app in request.user.attachmentapplication_set.all %}
+                                        <tr>
+                                            <td>
+                                                {{ app.attachment_post }}
+                                            </td>
+                                            <td>
+                                                {{ app.action }} - (<a href="{% url 'attachment:attachment_detail' slug=app.attachment_post.slug %}">view</a>)
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+{% endblock accounts_content %}

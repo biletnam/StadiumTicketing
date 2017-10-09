@@ -15,4 +15,4 @@ class CheckIfProfileExist(object):
             return super(CheckIfProfileExist, self).dispatch(request, *args, **kwargs)
         except ObjectDoesNotExist:
             messages.info(request, 'It is a requirement that you provide us with your phone number!!')
-            return http.HttpResponseRedirect(reverse('accounts-app:create-profile-view'))
+            return http.HttpResponseRedirect(reverse('accounts-app:create-profile-custom_mixins'))

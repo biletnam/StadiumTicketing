@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^', include('events.urls', namespace='events')),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^reports/', include('reports.urls', namespace='reports')),
+    url(r'^profile/', include('accounts.urls', namespace='userprofile')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
