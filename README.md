@@ -20,8 +20,11 @@ See deployment for notes on how to deploy the project on a live system.
    ```bash
     $ git clone https://github.com/gr1d99/StadiumTicketing.git
    ```
- 
- 2. Create a virtual enviroment.
+ 2. Navigate to the root of the project
+    ```bash
+     cd Ticket
+    ```
+ 3. Create a virtual enviroment.
     ```bash
      $ virtualenv --python=python3 env
     ```
@@ -29,24 +32,12 @@ See deployment for notes on how to deploy the project on a live system.
     activate virtual enviroment
     
     ```bash
-     $ source env/bin/activate
+     $ env\Scripts\activate
     ```
     
- 3. Intall dependencies.
+ 4. Intall dependencies.
     ```bash
      $ pip install -r requirements.txt
     ```
-   
- 4. create `secret.ini` file in the root of the project and copy the contents below to the file.
-   
-    ```ini
-    [DEFAULT]
-    SECRET_KEY: <secret key goes here>
-    ```
- 5. Run the server.
-    ```bash
-     python manage.py runserver
-    ```
- 
- 6. In your browser type [localhost:8000](127.0.0.1:8000)
+ 5. In your browser type [localhost:8000](127.0.0.1:8000)
  
