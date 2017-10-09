@@ -12,11 +12,21 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <span><i class="fa fa-info-circle"></i></span> {{ event.name|capfirst }}
+                        <span class="pull-right">{% if event.remaining_days == 0 %}
+                            <span class="text-success label"><i class="fa fa-circle"></i> Happening now</span>
+                        {% elif event.remaining_days < 0 %}
+                            <span class="text-danger label"><i class="fa fa-warning"></i> Past event</span>
+                        {% endif %}</span>
                     </div>
                     <div class="panel-body">
-                        <p>When? <span><i class="fa fa-calendar-o"></i> </span> <span class="badge">{{ event.event_date }}</span></p>
-                        <p>Days remaining <span><i class="fa fa-clock-o"></i> </span> <span class="badge">1</span> </p>
-                        <p class="text-justify">{{ event.description|truncatechars:'100' }}</p>
+                        <div class="event">
+                            <div>
+                                 <img src="{{ event.main_image.url }}" class="event-img" id="event-img">
+                             </div>
+                        </div>
+{#                        <p>When? <span><i class="fa fa-calendar-o"></i> </span> <span class="badge">{{ event.event_date }}</span></p>#}
+{#                        <p>Days remaining <span><i class="fa fa-clock-o"></i> </span> <span class="badge">1</span> </p>#}
+{#                        <p class="text-justify">{{ event.description|truncatechars:'100' }}</p>#}
                     </div>
                     <div class="panel-footer">
                         <a href="{{ event.get_absolute_url }}" class="btn btn-info btn-sm">Details <span><i class="fa fa-arrow-circle-right"></i> </span></a>

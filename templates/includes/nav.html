@@ -12,6 +12,7 @@
 
             <ul class="nav navbar-nav navbar-right">
                 {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'userprofile:userprofile_detail' slug=request.user %}" ><span><i class="fa fa-user"></i></span> {{ request.user|capfirst }}</a></li>
                     <li><a href="{% url 'account_logout' %}" ><span><i class="fa fa-sign-out"></i></span> Logout</a></li>
                 {% else %}
                     <li><a href="{% url 'account_login' %}" ><span><i class="fa fa-sign-in"></i></span> Login</a></li>

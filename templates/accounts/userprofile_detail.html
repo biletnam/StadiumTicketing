@@ -10,92 +10,99 @@
                             <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab"
                                                                       data-toggle="tab" >My Profile</a></li>
                             <li role="presentation"><a href="#attachment" aria-controls="attachment" role="tab"
-                                                       data-toggle="tab">My Attachment</a></li>
+                                                       data-toggle="tab">My Tickets</a></li>
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <br>
                             <br>
-                            <br>
                             <div role="tabpanel" class="tab-pane fade in active" id="profile">
                                 <h4 class="page-header text-center"></h4>
-                                                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <div class="user-profile">
-                                    <img class="img-responsive img-centered" src="{{ profile.profile_picture.url }}"/>
-                                    <br/>
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="user-profile">
+                                            <img class="img-responsive img-centered"
+                                                 src="{% if profile.profile_picture %}{{ profile.profile_picture.url }}{% endif %}"/>
+                                            <br/>
+                                        </div>
+                                        <table class="table table-bordered">
+                                            <caption>Personal Info</caption>
+                                            <tr>
+                                                <th>Username</th>
+                                                <td>{{ object.username|capfirst }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>First Name</th>
+                                                <td>{{ object.first_name|capfirst }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Last Name</th>
+                                                <td>{{ object.last_name|capfirst }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Phone Number</th>
+                                                <td>{{ object.phone_number }}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <a class="btn btn-default btn-block" href="{{ profile.get_update_url }}">Edit Your Profile</a>
+                                    </div>
                                 </div>
-                                <table class="table table-bordered">
-                                    <caption>Personal Info</caption>
-                                    <tr>
-                                        <th>Username</th>
-                                        <td>{{ object.username|capfirst }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>First Name</th>
-                                        <td>{{ object.first_name|capfirst }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Last Name</th>
-                                        <td>{{ object.last_name|capfirst }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Phone Number</th>
-                                        <td>{{ object.phone_number }}</td>
-                                    </tr>
-                                </table>
+                            </div>
 
-                                <table class="table table-bordered">
-                                    <caption>Education Info</caption>
-                                    <tr>
-                                        <th>University/College</th>
-                                        <td>{{ object.university|capfirst }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Course</th>
-                                        <td>{{ object.course|capfirst }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Year of Study</th>
-                                        <td>{{ object.year_of_study }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Resume</th>
-                                        <td><a class="btn btn-info btn-sm" href="{{ object.resume.url }}"><span class="fa fa-eye"></span> View</a></td>
-                                    </tr>
-                                </table>
-                            </div>
-                        <div class="panel-footer">
-                            <a class="btn btn-default btn-block" href="{{ profile.get_update_url }}">Edit Your Profile</a>
-                        </div>
-                        </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane fade in active" id="attachment">
-                                <h4 class="page-header text-center"></h4>
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Application</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for app in request.user.attachmentapplication_set.all %}
-                                        <tr>
-                                            <td>
-                                                {{ app.attachment_post }}
-                                            </td>
-                                            <td>
-                                                {{ app.action }} - (<a href="{% url 'attachment:attachment_detail' slug=app.attachment_post.slug %}">view</a>)
-                                            </td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
+                            <div role="tabpanel" class="tab-pane fade" id="attachment">
+                                <h4 class="page-header text-center">My Tickets</h4>
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        {% if userprofile.eventbook_set %}
+                                            <table class="table table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Ticket</th>
+                                                <th>Date Booked</th>
+                                                <th>No of tickets</th>
+                                                <th>Amount Paid</th>
+                                                <th>Ticket Valid</th>
+                                                <th></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for ticket in userprofile.eventbook_set.all %}
+                                                <tr>
+                                                    <td>{{ forloop.counter }}</td>
+                                                    <td>{{ ticket }}</td>
+                                                    <td>{{ ticket.timestamp }}</td>
+                                                    <td>{{ ticket.tickets }}</td>
+                                                    <td>{{ ticket.amount }}</td>
+                                                    <td>
+                                                        <span>
+                                                            {% if ticket.event.past_due is False %}
+                                                                <i class="fa fa-check text-success"></i>
+                                                            {% else %}
+                                                                <i class="fa fa-times text-danger"></i>
+                                                            {% endif %}
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <a class="btn btn-info btn-xs"
+                                                           href="{% url 'events:eventbook_update' ebid=ticket.id  %}">
+                                                            Update
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                            </table>
+                                        {% endif %}
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
 {% endblock accounts_content %}
