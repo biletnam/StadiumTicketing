@@ -20,10 +20,17 @@ See deployment for notes on how to deploy the project on a live system.
    ```bash
     $ git clone https://github.com/gr1d99/StadiumTicketing.git
    ```
+   
+   Checkout into develop branch
+   ```bash
+    $ git checkout develop
+   ```
+   
  2. Navigate to the root of the project
     ```bash
      cd Ticket
     ```
+    
  3. Install virtual enviroment
     ```bash
      $ pip install virtualenv
